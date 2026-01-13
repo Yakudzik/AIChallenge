@@ -1,4 +1,4 @@
-🤖 Telegram AI Bot (DeepSeek - OpenAI)
+#🤖 Telegram AI Bot (DeepSeek - OpenAI)
 
 Telegram-бот с AI, который:
 - работает в личных чатах и группах
