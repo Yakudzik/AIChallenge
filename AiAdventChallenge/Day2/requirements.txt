@@ -1,0 +1,4 @@
+python-telegram-bot==22.5
+openai==2.15.0
+logging==0.4.9.6
+DateTime==6.0

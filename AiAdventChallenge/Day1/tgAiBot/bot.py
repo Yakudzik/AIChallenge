@@ -1,5 +1,8 @@
 import asyncio
+import json
 import logging
+import uuid
+from datetime import datetime
 from pathlib import Path
 from telegram import Update
 from telegram.ext import (
@@ -121,18 +124,49 @@ async def on_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     "role": "system",
                     "content": (
                         "Ты умный, но говоришь на сленге. "
-                        "Отвечай кратко и по делу, со сленговыми фразами."
+                        "Отвечай кратко и по делу, со сленговыми фразами. "
+                        "Никогда не добавляй пояснения вне JSON. "
+                        "Ответ должен быть JSON-объектом с полями "
+                        "`id`, `answer`, `title` и `time`, например "
+                        "{\"id\": \"1\", \"answer\": \"ответ модели\", "
+                        "\"title\": \"Заголовок\", \"time\": \"2025-01-01T12:00:00Z\"}."
                     ),
                 },
                 {"role": "user", "content": text},
             ],
         )
 
-        answer = response.choices[0].message.content.strip()
-        if not answer:
-            answer = "Фак, не смог сформировать ответ. Попробуй перефразировать."
+        raw_answer = response.choices[0].message.content.strip()
+        parsed_answer = None
 
-        await update.message.reply_text(answer[:4096])
+        try:
+            payload = json.loads(raw_answer)
+            if isinstance(payload, dict):
+                for key in ("answer", "response", "message", "text"):
+                    if key in payload and payload[key]:
+                        parsed_answer = payload[key]
+                        break
+        except json.JSONDecodeError:
+            pass
+
+        final_answer = str(parsed_answer or raw_answer).strip()
+        if not final_answer:
+            final_answer = "Фак, не смог сформировать ответ. Попробуй перефразировать."
+
+        title = text.strip()
+        if not title:
+            title = "Без заголовка"
+        elif len(title) > 64:
+            title = title[:61] + "..."
+
+        payload = {
+            "id": str(uuid.uuid4()),
+            "answer": final_answer[:4000],
+            "title": title,
+            "time": datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
+        }
+
+        await update.message.reply_text(json.dumps(payload, ensure_ascii=False))
 
     except Exception as e:
         await update.message.reply_text(f"Ошибка: {e}"[:4096])
