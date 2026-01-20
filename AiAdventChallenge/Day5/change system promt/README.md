@@ -65,3 +65,4 @@ pip install -r requirements.txt
   ```
 
 После запуска откройте `http://127.0.0.1:8000/`.
+![Promts](https://github.com/Yakudzik/AIChallenge/blob/fb903b40e2d270cf1af25187cbf4aa2c60e71c26/AiAdventChallenge/Day5/change%20system%20promt/promts.jpg)
