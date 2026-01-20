@@ -65,4 +65,4 @@ pip install -r requirements.txt
 
 После запуска откройте `http://127.0.0.1:8000/`.
 
-(/запросы.jpg)
+(AiAdventChallenge/Day4/group of experts/запросы.jpg)
