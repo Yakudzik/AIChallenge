@@ -65,3 +65,9 @@ pip install -r requirements.txt
   ```
 
 После запуска откройте `http://127.0.0.1:8000/`.
+![DeepSeek temperature - 0 #1](https://github.com/Yakudzik/AIChallenge/blob/c86341a6736fcc2f7dbe34bb680a203bbd82b2da/AiAdventChallenge/Day6/temperature/screenshots/dt0.jpg)
+![DeepSeek temperature - 0 #2](https://github.com/Yakudzik/AIChallenge/blob/c86341a6736fcc2f7dbe34bb680a203bbd82b2da/AiAdventChallenge/Day6/temperature/screenshots/dt02.jpg)
+![DeepSeek temperature - 0 #3](https://github.com/Yakudzik/AIChallenge/blob/c86341a6736fcc2f7dbe34bb680a203bbd82b2da/AiAdventChallenge/Day6/temperature/screenshots/dt03.jpg)
+![DeepSeek temperature - 1 #4](https://github.com/Yakudzik/AIChallenge/blob/c86341a6736fcc2f7dbe34bb680a203bbd82b2da/AiAdventChallenge/Day6/temperature/screenshots/dt1.jpg)
+![DeepSeek temperature - 1 #5](https://github.com/Yakudzik/AIChallenge/blob/c86341a6736fcc2f7dbe34bb680a203bbd82b2da/AiAdventChallenge/Day6/temperature/screenshots/dt12.jpg)
+![DeepSeek temperature - 2 #6](https://github.com/Yakudzik/AIChallenge/blob/c86341a6736fcc2f7dbe34bb680a203bbd82b2da/AiAdventChallenge/Day6/temperature/screenshots/dt2.jpg)
